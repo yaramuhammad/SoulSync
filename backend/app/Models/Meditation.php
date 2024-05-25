@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Meditation extends Model
 {
     use HasFactory;
+
     public function getImageUrlAttribute()
     {
-        return url('storage/' . $this->attributes['image']);
+        return url('storage/'.$this->attributes['image']);
     }
 }

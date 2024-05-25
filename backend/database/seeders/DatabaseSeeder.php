@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(MeditationsTableSeeder::class);
         $this->call(DepressionTestSeeder::class);
+        DB::table('admins')->insert(['email' => 'admin@soulsync.com', 'password' => Hash::make('password'), 'name' => 'admin']);
     }
 }

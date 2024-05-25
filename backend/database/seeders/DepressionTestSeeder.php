@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -14,16 +13,16 @@ class DepressionTestSeeder extends Seeder
     public function run(): void
     {
         $questions = [
-            [ 'question' => 'Feeling sad or down in the dumps'],
-            [ 'question' => 'Feeling unhappy or blue'],
-            [ 'question' => 'Crying spells or tearfulness'],
-            [ 'question' => 'Feeling discouraged'],
-            [ 'question' => 'Feeling hopeless'],
-            [ 'question' => 'Low self-esteem'],
-            [ 'question' => 'Feeling worthless or inadequate'],
-            [ 'question' => 'Guilt or shame'],
-            [ 'question' => 'Criticizing yourself or blaming yourself'],
-            [ 'question' => 'Difficulty making decisions'],
+            ['question' => 'Feeling sad or down in the dumps'],
+            ['question' => 'Feeling unhappy or blue'],
+            ['question' => 'Crying spells or tearfulness'],
+            ['question' => 'Feeling discouraged'],
+            ['question' => 'Feeling hopeless'],
+            ['question' => 'Low self-esteem'],
+            ['question' => 'Feeling worthless or inadequate'],
+            ['question' => 'Guilt or shame'],
+            ['question' => 'Criticizing yourself or blaming yourself'],
+            ['question' => 'Difficulty making decisions'],
             ['question' => 'Loss of interest in family, friends or colleagues'],
             ['question' => 'Loneliness'],
             ['question' => 'Spending less time with family or friends'],

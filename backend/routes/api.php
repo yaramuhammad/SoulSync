@@ -24,5 +24,4 @@ Route::post('/password', [PasswordController::class, 'changePassword'])
 Route::get('/depression-test', [DepressionTestQuestionController::class, 'index'])->middleware('auth:sanctum');
 Route::post('/depression-test', [DepressionTestQuestionController::class, 'store'])->middleware('auth:sanctum');
 
-
 Route::get('/meditation', [MeditationController::class, 'index'])->middleware('auth:sanctum');

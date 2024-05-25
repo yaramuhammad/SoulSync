@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Meditation;
-use Illuminate\Http\Request;
 
 class MeditationController extends Controller
 {
