@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DepressionTestQuestionController;
 use App\Http\Controllers\Profile\PasswordController;
 use App\Http\Controllers\Profile\ProfileController;
 use Illuminate\Http\Request;
@@ -18,3 +19,6 @@ Route::post('/profile', [ProfileController::class, 'updateProfile'])
 
 Route::post('/password', [PasswordController::class, 'changePassword'])
     ->middleware('auth:sanctum');
+
+Route::get('/depression-test', [DepressionTestQuestionController::class, 'index'])->middleware('auth:sanctum');
+Route::post('/depression-test', [DepressionTestQuestionController::class, 'store'])->middleware('auth:sanctum');
