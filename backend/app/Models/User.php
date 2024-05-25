@@ -54,4 +54,9 @@ class User extends Authenticatable implements MustVerifyEmail
 
         return $this->createToken('api')->plainTextToken;
     }
+
+    public function depressionResults()
+    {
+        return $this->hasMany(DepressionTestResult::class);
+    }
 }

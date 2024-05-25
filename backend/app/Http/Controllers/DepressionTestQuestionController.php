@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\DepressionTestQuestion;
+use App\Models\DepressionTestResult;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DepressionTestQuestionController extends Controller
 {
@@ -22,6 +24,12 @@ class DepressionTestQuestionController extends Controller
         $answers = $request->input('answers');
 
         $result = $this->evaluateBurnsDepressionScore($answers);
+
+        $depressionResult = new DepressionTestResult();
+        $depressionResult->user_id = Auth::id();
+        $depressionResult->total_score = $result['total_score'];
+        $depressionResult->level_of_depression = $result['level_of_depression'];
+        $depressionResult->save();
 
         return response()->json($result);
     }
