@@ -23,8 +23,8 @@ class EntryResource extends JsonResource
             "journal" => $this->journal,
             "stress-analysis" => $this->stress_analysis,
             "depression-analysis" => $this->depression_analysis,
-            'activities' => ActivityResource::collection($this->whenLoaded('activities')),
-            'reasons' => ReasonResource::collection($this->whenLoaded('reasons')),
+            'activities' => $this->activities->pluck('name'),
+            'reasons' => $this->reasons->pluck('name'),
             'tip'=>$this->tip->tip,
             'tip_description' => $this->tip->description
         ];
