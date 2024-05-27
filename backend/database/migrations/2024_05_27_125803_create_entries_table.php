@@ -22,6 +22,7 @@ return new class extends Migration
             $table->text('journal')->nullable();
             $table->boolean('stress-analysis')->nullable();
             $table->boolean('depression-analysis')->nullable();
+            $table->foreignId('tip_id')->nullable();
         });
     }
 

@@ -27,4 +27,9 @@ class Entry extends Model
     {
         return $this->belongsTo(SecondaryEmotion::class);
     }
+
+    public function tip()
+    {
+        return $this->belongsTo(Tip::class);
+    }
 }

@@ -37,7 +37,7 @@ Route::get('/primary-emotions', [EmotionsController::class, 'index'])->middlewar
 Route::get('/secondary-emotions/{emotion}', [SecondaryEmotionsController::class, 'index'])->middleware('auth:sanctum');
 Route::post('/secondary-emotions/{secondaryEmotion}', [EntryController::class, 'addSecondaryEmotion'])->middleware('auth:sanctum');
 
-Route::post('/journal', [JournalController::class, 'store'])->middleware('auth:sanctum');
+Route::post('/journal', [EntryController::class, 'addJournal'])->middleware('auth:sanctum');
 
 Route::get('/activities', [ActivityController::class, 'index'])->middleware('auth:sanctum');
 Route::get('/reasons', [ReasonController::class, 'index'])->middleware('auth:sanctum');
@@ -54,4 +54,5 @@ Route::post('/reasons', [EntryController::class, 'addReasons'])->middleware('aut
 Route::get('/preferences/questions', [PreferenceController::class, 'showQuestions'])->middleware('auth:sanctum');
 Route::post('/preferences/answers', [PreferenceController::class, 'storeAnswers'])->middleware('auth:sanctum');
 Route::get('/preferences/answers', [PreferenceController::class, 'getAnswers'])->middleware('auth:sanctum');
+
 

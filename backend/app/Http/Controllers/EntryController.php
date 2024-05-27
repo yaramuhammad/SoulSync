@@ -6,8 +6,10 @@ use App\Http\Resources\EntryResource;
 use App\Models\Emotion;
 use App\Models\Entry;
 use App\Models\SecondaryEmotion;
+use App\Models\Tip;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class EntryController extends Controller
 {
@@ -60,6 +62,7 @@ class EntryController extends Controller
     {
         $entry = self::updateOrCreateEntry();
         $entry->primary_emotion_id = $emotion->id;
+        $entry->secondary_emotion_id = null;
         $entry->save();
         return response()->json(['message'=>'emotion saved successfully'], );
     }
@@ -73,5 +76,36 @@ class EntryController extends Controller
         return response()->json(['message' => 'Emotion saved successfully']);
     }
 
+    private function generateTip()
+    {
+        $entry = $this->updateOrCreateEntry();
+        $preferences = Auth::user()->preferences()->where('answer', true)->pluck('preferences_question_tag')->toArray();
+
+
+        $tips = Tip::where('emotion_id', $entry->primary_emotion_id)
+            ->where(function ($query) use ($preferences) {
+                $query->whereIn('tag', $preferences)
+                    ->orWhereNull('tag');
+            })
+            ->get();
+
+        $tip = $tips->random();
+        $entry->tip_id = $tip->id;
+        $entry->save();
+        return $tip;
+    }
+
+    public function addJournal(Request $request)
+    {
+        $validatedData = $request->validate([
+            'journal' => 'required|string',
+        ]);
+
+        $entry = $this->updateOrCreateEntry();
+        $entry->journal = $validatedData['journal'];
+        $entry->save();
+
+        return $this->generateTip();
+    }
 
 }

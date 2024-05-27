@@ -25,6 +25,8 @@ class EntryResource extends JsonResource
             "depression-analysis" => $this->depression_analysis,
             'activities' => ActivityResource::collection($this->whenLoaded('activities')),
             'reasons' => ReasonResource::collection($this->whenLoaded('reasons')),
+            'tip'=>$this->tip->tip,
+            'tip_description' => $this->tip->description
         ];
     }
 }
