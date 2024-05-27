@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('secondary_emotions', function (Blueprint $table) {
-            $table->id();
+        Schema::create('preferences_questions', function (Blueprint $table) {
             $table->timestamps();
-            $table->string('name');
-            $table->string('photo');
-            $table->foreignId('parent_id')->nullable();
-            $table->text('description')->nullable();
+            $table->string('question');
+            $table->string('tag')->primary();
         });
     }
 
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('secondary_emotions');
+        Schema::dropIfExists('preferences_questions');
     }
 };

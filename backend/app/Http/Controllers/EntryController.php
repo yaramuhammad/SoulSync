@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\EntryResource;
 use App\Models\Emotion;
 use App\Models\Entry;
 use App\Models\SecondaryEmotion;
@@ -10,6 +11,19 @@ use Illuminate\Support\Facades\Auth;
 
 class EntryController extends Controller
 {
+    public function index()
+    {
+        $entries = Auth::user()->entries()->with(['activities', 'reasons','primary_emotion', 'secondary_emotion'])->get();
+        return EntryResource::collection($entries);
+    }
+
+    public function show()
+    {
+        $entry = Auth::user()->entries()->with(['activities', 'reasons','primary_emotion', 'secondary_emotion'])
+                    ->whereDate('created_at', today())->first();
+        return new EntryResource($entry);
+    }
+
     public static function updateOrCreateEntry()
     {
         $existingEntry = Entry::where('user_id', Auth::id())->whereDate('created_at', today())->first();

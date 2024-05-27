@@ -18,4 +18,13 @@ class Entry extends Model
     {
         return $this->belongsToMany(Reason::class,'entry_reason');
     }
+
+    public function primary_emotion()
+    {
+        return $this->belongsTo(Emotion::class);
+    }
+    public function secondary_emotion()
+    {
+        return $this->belongsTo(SecondaryEmotion::class);
+    }
 }
