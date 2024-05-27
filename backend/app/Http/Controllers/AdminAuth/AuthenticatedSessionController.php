@@ -1,24 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AdminAuth;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
-class AdminAuthenticationController extends Controller
+class AuthenticatedSessionController extends Controller
 {
-    public function showLoginForm()
+    /**
+     * Handle an incoming authentication request.
+     */
+    public function store(LoginRequest $request)
     {
-        return view('auth.admin-login');
-    }
-
-    public function login(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-
         $credentials = $request->only('email', 'password');
 
         if (Auth::guard('admin')->attempt($credentials, $request->filled('remember'))) {
@@ -28,11 +24,14 @@ class AdminAuthenticationController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'email' => 'Invalid Credentials',
         ]);
     }
 
-    public function logout(Request $request)
+    /**
+     * Destroy an authenticated session.
+     */
+    public function destroy(Request $request)
     {
         Auth::guard('admin')->logout();
 

@@ -1,31 +1,29 @@
-<!-- resources/views/admin/login.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
-<body>
-<form method="POST" action="{{ route('admin.login') }}">
-    @csrf
-    <div>
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" value="{{ old('email') }}" required>
-        @error('email')
-        <span style="color: red;">{{ $message }}</span>
-        @enderror
+<body class="flex items-center justify-center h-screen bg-gray-100">
+    <div class="bg-white rounded-sm drop-shadow-lg text-center">
+
+        <h1 class="text-blue-600 text-3xl my-10 font-bold">Sign in</h1>
+        <form class="flex flex-col" method="POST" action="{{ route('admin.login') }}">
+                @csrf
+            <input type="email" placeholder="Email" class="border py-3 px-3 mx-10 my-6 rounded-sm
+          placeholder:text-sm placeholder:text-slate-500 focus:outline-none focus:border-blue-700 duration-300" name="email"/>
+            <input type="password" placeholder="Password" class="border py-3 px-3 mx-10 my-3 rounded-sm
+          placeholder:text-sm placeholder:text-slate-500 focus:outline-none focus:border-blue-700 duration-300" name="password"/>
+            @error('email')
+            <span style="color: red;">{{ $message }}</span>
+            @enderror
+            <button class="mx-40 my-5 py-3 px-3 bg-blue-800 text-slate-50 rounded-sm text-sm font-normal hover:bg-blue-600 hover:bg-opacity-90 duration-200">
+                Sign in
+            </button>
+        </form>
     </div>
-    <div>
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" required>
-        @error('password')
-        <span style="color: red;">{{ $message }}</span>
-        @enderror
-    </div>
-    <div>
-        <button type="submit">Login</button>
-    </div>
-</form>
 </body>
 </html>
