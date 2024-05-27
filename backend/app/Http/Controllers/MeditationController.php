@@ -11,7 +11,6 @@ class MeditationController extends Controller
 
         $meditations = Meditation::all();
 
-        // Modify the image paths to be full URLs
         foreach ($meditations as $meditation) {
             $meditation->image = url($meditation->image);
         }

@@ -1,9 +1,15 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\DepressionTestQuestionController;
+use App\Http\Controllers\EmotionsController;
+use App\Http\Controllers\EntryController;
+use App\Http\Controllers\JournalController;
 use App\Http\Controllers\MeditationController;
 use App\Http\Controllers\Profile\PasswordController;
 use App\Http\Controllers\Profile\ProfileController;
+use App\Http\Controllers\ReasonController;
+use App\Http\Controllers\SecondaryEmotionsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,3 +31,24 @@ Route::get('/depression-test', [DepressionTestQuestionController::class, 'index'
 Route::post('/depression-test', [DepressionTestQuestionController::class, 'store'])->middleware('auth:sanctum');
 
 Route::get('/meditation', [MeditationController::class, 'index'])->middleware('auth:sanctum');
+
+Route::get('/primary-emotions', [EmotionsController::class, 'index'])->middleware('auth:sanctum');
+Route::get('/secondary-emotions/{emotion}', [SecondaryEmotionsController::class, 'index'])->middleware('auth:sanctum');
+Route::post('/secondary-emotions/{secondaryEmotion}', [EntryController::class, 'addSecondaryEmotion'])->middleware('auth:sanctum');
+
+Route::post('/journal', [JournalController::class, 'store'])->middleware('auth:sanctum');
+
+Route::get('/activities', [ActivityController::class, 'index'])->middleware('auth:sanctum');
+Route::get('/reasons', [ReasonController::class, 'index'])->middleware('auth:sanctum');
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/entries', 'EntryController@index');
+    Route::post('/entries', 'EntryController@store');
+    Route::get('/entries/{entry}', 'EntryController@show');
+    Route::put('/entries/{entry}', 'EntryController@update');
+    Route::delete('/entries/{entry}', 'EntryController@destroy');
+});
+
+
+Route::post('/activities', [EntryController::class, 'addActivities'])->middleware('auth:sanctum');
+Route::post('/reasons', [EntryController::class, 'addReasons'])->middleware('auth:sanctum');

@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(MeditationsTableSeeder::class);
         $this->call(DepressionTestSeeder::class);
+        $this->call(EmotionsSeeder::class);
+        $this->call(ActivityReasonsSeeder::class);
         DB::table('admins')->insert(['email' => 'admin@soulsync.com', 'password' => Hash::make('password'), 'name' => 'admin']);
     }
 }
