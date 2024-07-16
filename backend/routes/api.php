@@ -1,11 +1,14 @@
 <?php
 
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DepressionTestQuestionController;
 use App\Http\Controllers\EmotionsController;
 use App\Http\Controllers\EntryController;
 use App\Http\Controllers\JournalController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\MeditationController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\PreferenceController;
 use App\Http\Controllers\Profile\PasswordController;
 use App\Http\Controllers\Profile\ProfileController;
@@ -56,3 +59,16 @@ Route::post('/preferences/answers', [PreferenceController::class, 'storeAnswers'
 Route::get('/preferences/answers', [PreferenceController::class, 'getAnswers'])->middleware('auth:sanctum');
 
 
+Route::get('/posts', [PostController::class,'index'])->middleware('auth:sanctum');
+Route::post('/posts', [PostController::class,'store'])->middleware('auth:sanctum');
+Route::post('/posts/{post}/edit', [PostController::class,'update'])->middleware('auth:sanctum');
+Route::delete('/posts/{post}/delete', [PostController::class,'destroy'])->middleware('auth:sanctum');
+
+
+Route::post('/posts/{post}/comment', [CommentController::class,'store'])->middleware('auth:sanctum');
+Route::post('/comment/{comment}/edit', [CommentController::class,'update'])->middleware('auth:sanctum');
+Route::delete('/comment/{comment}/delete', [CommentController::class,'destroy'])->middleware('auth:sanctum');
+
+
+Route::post('/posts/{post}/like', [LikeController::class,'store'])->middleware('auth:sanctum');
+Route::delete('/likes/{like}/delete', [LikeController::class,'destroy'])->middleware('auth:sanctum');
