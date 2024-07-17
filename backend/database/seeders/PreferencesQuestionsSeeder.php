@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\PreferencesQuestion;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class PreferencesQuestionsSeeder extends Seeder
@@ -20,7 +19,6 @@ class PreferencesQuestionsSeeder extends Seeder
             ['question' => 'Do you usually spend a lot of time at home?', 'tag' => 'Home'],
             ['question' => 'Do you like to socialize with other people?', 'tag' => 'Social'],
         ];
-
 
         // Insert the questions into the database
         foreach ($questions as $question) {

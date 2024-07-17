@@ -11,18 +11,19 @@ class Entry extends Model
 
     public function activities(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(Activity::class,'entry_activity');
+        return $this->belongsToMany(Activity::class, 'entry_activity');
     }
 
     public function reasons(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(Reason::class,'entry_reason');
+        return $this->belongsToMany(Reason::class, 'entry_reason');
     }
 
     public function primary_emotion()
     {
         return $this->belongsTo(Emotion::class);
     }
+
     public function secondary_emotion()
     {
         return $this->belongsTo(SecondaryEmotion::class);

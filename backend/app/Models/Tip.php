@@ -10,5 +10,4 @@ class Tip extends Model
     use HasFactory;
 
     protected $fillable = ['tip', 'tag', 'emotion_id', 'description'];
-
 }

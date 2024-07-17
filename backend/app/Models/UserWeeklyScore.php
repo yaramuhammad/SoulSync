@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class UserWeeklyScore extends Model
 {
     use HasFactory;
+
     protected $fillable = ['user_id', 'weekly_aspect_id', 'score', 'week', 'year'];
 }

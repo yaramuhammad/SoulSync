@@ -9,7 +9,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::orderBy("created_at", "desc")->with(['comments', 'likes.user'])->get();
+        $posts = Post::orderBy('created_at', 'desc')->with(['comments', 'likes.user'])->get();
 
         $result = $posts->map(function ($post) {
             return [
@@ -22,19 +22,15 @@ class PostController extends Controller
                 'likes' => $post->likes->map(function ($like) {
                     return [
                         'id' => $like->id,
-                        'user_name' => $like->user->name
+                        'user_name' => $like->user->name,
                     ];
                 }),
-                'comments' => $post->comments
+                'comments' => $post->comments,
             ];
         });
 
         return response()->json($result);
     }
-
-
-
-
 
     public function store(Request $request)
     {
@@ -67,6 +63,7 @@ class PostController extends Controller
             'body' => 'required',
         ]);
         $post->update($data);
+
         return response()->json(['success' => 'Post updated successfully']);
     }
 
@@ -74,6 +71,7 @@ class PostController extends Controller
     {
         if ($post->user_id == auth()->user()->id) {
             $post->delete();
+
             return response()->json(['success' => 'Post deleted successfully']);
         } else {
             return abort(403);

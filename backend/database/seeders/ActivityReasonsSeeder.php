@@ -83,7 +83,6 @@ class ActivityReasonsSeeder extends Seeder
             DB::table('activities')->insert($activity);
         }
 
-
         $reasons = [
             [
                 'name' => 'Family',

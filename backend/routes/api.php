@@ -45,40 +45,32 @@ Route::post('/journal', [EntryController::class, 'addJournal'])->middleware('aut
 Route::get('/activities', [ActivityController::class, 'index'])->middleware('auth:sanctum');
 Route::get('/reasons', [ReasonController::class, 'index'])->middleware('auth:sanctum');
 
-
-Route::get('/entries', [EntryController::class ,'index'])->middleware('auth:sanctum');
-Route::get('/entry', [EntryController::class ,'show'])->middleware('auth:sanctum');
-
+Route::get('/entries', [EntryController::class, 'index'])->middleware('auth:sanctum');
+Route::get('/entry', [EntryController::class, 'show'])->middleware('auth:sanctum');
 
 Route::post('/activities', [EntryController::class, 'addActivities'])->middleware('auth:sanctum');
 Route::post('/reasons', [EntryController::class, 'addReasons'])->middleware('auth:sanctum');
-
 
 Route::get('/preferences/questions', [PreferenceController::class, 'showQuestions'])->middleware('auth:sanctum');
 Route::post('/preferences/answers', [PreferenceController::class, 'storeAnswers'])->middleware('auth:sanctum');
 Route::get('/preferences/answers', [PreferenceController::class, 'getAnswers'])->middleware('auth:sanctum');
 
+Route::get('/posts', [PostController::class, 'index'])->middleware('auth:sanctum');
+Route::post('/posts', [PostController::class, 'store'])->middleware('auth:sanctum');
+Route::post('/posts/{post}/edit', [PostController::class, 'update'])->middleware('auth:sanctum');
+Route::delete('/posts/{post}/delete', [PostController::class, 'destroy'])->middleware('auth:sanctum');
 
-Route::get('/posts', [PostController::class,'index'])->middleware('auth:sanctum');
-Route::post('/posts', [PostController::class,'store'])->middleware('auth:sanctum');
-Route::post('/posts/{post}/edit', [PostController::class,'update'])->middleware('auth:sanctum');
-Route::delete('/posts/{post}/delete', [PostController::class,'destroy'])->middleware('auth:sanctum');
+Route::post('/posts/{post}/comment', [CommentController::class, 'store'])->middleware('auth:sanctum');
+Route::post('/comment/{comment}/edit', [CommentController::class, 'update'])->middleware('auth:sanctum');
+Route::delete('/comment/{comment}/delete', [CommentController::class, 'destroy'])->middleware('auth:sanctum');
 
+Route::post('/posts/{post}/like', [LikeController::class, 'store'])->middleware('auth:sanctum');
+Route::delete('/likes/{like}/delete', [LikeController::class, 'destroy'])->middleware('auth:sanctum');
 
-Route::post('/posts/{post}/comment', [CommentController::class,'store'])->middleware('auth:sanctum');
-Route::post('/comment/{comment}/edit', [CommentController::class,'update'])->middleware('auth:sanctum');
-Route::delete('/comment/{comment}/delete', [CommentController::class,'destroy'])->middleware('auth:sanctum');
-
-
-Route::post('/posts/{post}/like', [LikeController::class,'store'])->middleware('auth:sanctum');
-Route::delete('/likes/{like}/delete', [LikeController::class,'destroy'])->middleware('auth:sanctum');
-
-
-Route::get('/weekly-aspects', [WeeklyAspectController::class,'index'])->middleware('auth:sanctum');
-Route::post('/weekly-scores', [WeeklyAspectController::class,'store'])->middleware('auth:sanctum');
-Route::get('/weekly-tips', [WeeklyAspectController::class,'currentWeekTips'])->middleware('auth:sanctum');
-Route::put('/weekly-tips/{tipId}/mark-as-done', [WeeklyAspectController::class,'markTipAsDone'])->middleware('auth:sanctum');
-Route::get('/check-weekly-entry', [WeeklyAspectController::class,'returnkUserWeeklyEntry'])->middleware('auth:sanctum');
-
+Route::get('/weekly-aspects', [WeeklyAspectController::class, 'index'])->middleware('auth:sanctum');
+Route::post('/weekly-scores', [WeeklyAspectController::class, 'store'])->middleware('auth:sanctum');
+Route::get('/weekly-tips', [WeeklyAspectController::class, 'currentWeekTips'])->middleware('auth:sanctum');
+Route::put('/weekly-tips/{tipId}/mark-as-done', [WeeklyAspectController::class, 'markTipAsDone'])->middleware('auth:sanctum');
+Route::get('/check-weekly-entry', [WeeklyAspectController::class, 'returnkUserWeeklyEntry'])->middleware('auth:sanctum');
 
 Route::middleware('auth:sanctum')->get('/customized-tips', [WeeklyAspectController::class, 'getCustomizedTips']);

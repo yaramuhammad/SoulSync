@@ -18,8 +18,8 @@ class CommentFactory extends Factory
     {
         return [
             'body' => $this->faker->paragraph,
-            'user_id'=>rand(1,10),
-            'post_id'=>rand(1,100),
+            'user_id' => rand(1, 10),
+            'post_id' => rand(1, 100),
         ];
     }
 }

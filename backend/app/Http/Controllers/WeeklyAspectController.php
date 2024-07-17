@@ -8,8 +8,8 @@ use App\Models\UserWeeklyScore;
 use App\Models\UserWeeklyTip;
 use App\Models\WeeklyAspect;
 use App\Models\WeeklyTip;
-use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class WeeklyAspectController extends Controller
@@ -18,7 +18,6 @@ class WeeklyAspectController extends Controller
     {
         return WeeklyAspect::all();
     }
-
 
     public function store(Request $request)
     {
@@ -81,7 +80,6 @@ class WeeklyAspectController extends Controller
         return response()->json(['message' => 'Scores submitted successfully']);
     }
 
-
     public function currentWeekTips(Request $request)
     {
         $user = $request->user();
@@ -99,7 +97,6 @@ class WeeklyAspectController extends Controller
         return response()->json($tips);
     }
 
-
     public function markTipAsDone(Request $request, $tipId)
     {
         $user = $request->user();
@@ -108,7 +105,7 @@ class WeeklyAspectController extends Controller
             ->where('id', $tipId)
             ->first();
 
-        if (!$userTip) {
+        if (! $userTip) {
             return response()->json(['error' => 'User tip not found'], 404);
         }
 
@@ -132,6 +129,7 @@ class WeeklyAspectController extends Controller
         if ($existingScores) {
             return true;
         }
+
         return false;
     }
 
@@ -139,7 +137,6 @@ class WeeklyAspectController extends Controller
     {
         return response()->json(['is_entry_exists' => $this->checkUserWeeklyEntry(auth()->user())]);
     }
-
 
     public function getCustomizedTips(Request $request)
     {
@@ -160,5 +157,4 @@ class WeeklyAspectController extends Controller
         // Return the tips as JSON response
         return response()->json($tips);
     }
-
 }

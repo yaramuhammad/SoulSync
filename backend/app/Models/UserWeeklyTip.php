@@ -15,5 +15,4 @@ class UserWeeklyTip extends Model
     {
         return $this->belongsTo(WeeklyTip::class);
     }
-
 }

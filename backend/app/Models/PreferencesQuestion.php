@@ -10,7 +10,9 @@ class PreferencesQuestion extends Model
     use HasFactory;
 
     protected $primaryKey = 'tag';
+
     public $incrementing = false;
+
     protected $keyType = 'string';
 
     protected $fillable = ['tag', 'question'];

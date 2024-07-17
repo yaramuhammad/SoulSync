@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Like;
-use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Http\Request;
 
 class LikeController extends Controller
 {
@@ -26,6 +26,7 @@ class LikeController extends Controller
             return abort(403);
         }
         $like->delete();
+
         return response()->json(['success' => 'Like deleted successfully']);
     }
 }

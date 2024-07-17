@@ -9,20 +9,21 @@ use App\Models\SecondaryEmotion;
 use App\Models\Tip;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class EntryController extends Controller
 {
     public function index()
     {
-        $entries = Auth::user()->entries()->with(['activities', 'reasons','primary_emotion', 'secondary_emotion'])->get();
+        $entries = Auth::user()->entries()->with(['activities', 'reasons', 'primary_emotion', 'secondary_emotion'])->get();
+
         return EntryResource::collection($entries);
     }
 
     public function show()
     {
-        $entry = Auth::user()->entries()->with(['activities', 'reasons','primary_emotion', 'secondary_emotion'])
+        $entry = Auth::user()->entries()->with(['activities', 'reasons', 'primary_emotion', 'secondary_emotion'])
             ->whereDate('created_at', today())->first();
+
         return new EntryResource($entry);
     }
 
@@ -36,6 +37,7 @@ class EntryController extends Controller
             $newEntry = new Entry();
             $newEntry->user_id = Auth::id();
             $newEntry->save();
+
             return $newEntry;
         }
     }
@@ -46,7 +48,8 @@ class EntryController extends Controller
         $entry->primary_emotion_id = $emotion->id;
         $entry->secondary_emotion_id = null;
         $entry->save();
-        return response()->json(['message'=>'Primary emotion saved successfully']);
+
+        return response()->json(['message' => 'Primary emotion saved successfully']);
     }
 
     public function addSecondaryEmotion(SecondaryEmotion $secondaryEmotion)
@@ -59,7 +62,7 @@ class EntryController extends Controller
         $primaryEmotion = Emotion::find($entry->primary_emotion_id);
 
         $validSecondaryEmotions = $primaryEmotion->secondaryEmotions;
-        if (!$validSecondaryEmotions->contains($secondaryEmotion)) {
+        if (! $validSecondaryEmotions->contains($secondaryEmotion)) {
             return response()->json(['error' => 'Invalid secondary emotion for the selected primary emotion'], 422);
         }
 
@@ -121,12 +124,13 @@ class EntryController extends Controller
         $tips = Tip::where('emotion_id', $entry->primary_emotion_id)
             ->where(function ($query) use ($preferences) {
                 $query->whereIn('tag', $preferences)
-                      ->orWhereNull('tag');
+                    ->orWhereNull('tag');
             })
             ->get();
         $tip = $tips->random();
         $entry->tip_id = $tip->id;
         $entry->save();
+
         return response()->json($tip);
     }
 }

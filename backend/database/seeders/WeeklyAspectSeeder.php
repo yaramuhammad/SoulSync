@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\WeeklyAspect;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class WeeklyAspectSeeder extends Seeder
@@ -23,7 +22,7 @@ class WeeklyAspectSeeder extends Seeder
             ['name' => 'Fun'],
             ['name' => 'Physical Environment'],
             ['name' => 'Spirituality'],
-            ['name' => 'Love']
+            ['name' => 'Love'],
         ];
 
         foreach ($aspects as $aspect) {

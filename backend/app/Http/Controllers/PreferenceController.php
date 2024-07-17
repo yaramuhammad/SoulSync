@@ -25,12 +25,13 @@ class PreferenceController extends Controller
             );
         }
 
-        return response()->json(['success'=> 'Preferences saved successfully.']);
+        return response()->json(['success' => 'Preferences saved successfully.']);
     }
 
     public function getAnswers()
     {
         $user = Auth::user();
-        return $user->preferences()->get(['preferences_question_tag','answer']);
+
+        return $user->preferences()->get(['preferences_question_tag', 'answer']);
     }
 }
