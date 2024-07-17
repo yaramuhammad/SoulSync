@@ -23,6 +23,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ActivityReasonsSeeder::class);
         $this->call(PreferencesQuestionsSeeder::class);
         $this->call(TipSeeder::class);
+        $this->call(WeeklyAspectSeeder::class);
+        $this->call(WeeklyTipSeeder::class);
         DB::table('admins')->insert(['email' => 'admin@soulsync.com', 'password' => Hash::make('password'), 'name' => 'admin']);
         User::factory()->count(10)->create();
         

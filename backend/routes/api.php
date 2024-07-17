@@ -5,7 +5,6 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DepressionTestQuestionController;
 use App\Http\Controllers\EmotionsController;
 use App\Http\Controllers\EntryController;
-use App\Http\Controllers\JournalController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\MeditationController;
 use App\Http\Controllers\PostController;
@@ -14,6 +13,7 @@ use App\Http\Controllers\Profile\PasswordController;
 use App\Http\Controllers\Profile\ProfileController;
 use App\Http\Controllers\ReasonController;
 use App\Http\Controllers\SecondaryEmotionsController;
+use App\Http\Controllers\WeeklyAspectController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -72,3 +72,10 @@ Route::delete('/comment/{comment}/delete', [CommentController::class,'destroy'])
 
 Route::post('/posts/{post}/like', [LikeController::class,'store'])->middleware('auth:sanctum');
 Route::delete('/likes/{like}/delete', [LikeController::class,'destroy'])->middleware('auth:sanctum');
+
+
+Route::get('/weekly-aspects', [WeeklyAspectController::class,'index'])->middleware('auth:sanctum');
+Route::post('/weekly-scores', [WeeklyAspectController::class,'store'])->middleware('auth:sanctum');
+Route::get('/weekly-tips', [WeeklyAspectController::class,'currentWeekTips'])->middleware('auth:sanctum');
+Route::put('/weekly-tips/{tipId}/mark-as-done', [WeeklyAspectController::class,'markTipAsDone'])->middleware('auth:sanctum');
+Route::get('/check-weekly-entry', [WeeklyAspectController::class,'returnkUserWeeklyEntry'])->middleware('auth:sanctum');
