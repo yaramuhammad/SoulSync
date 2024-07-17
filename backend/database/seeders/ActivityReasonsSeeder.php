@@ -15,67 +15,67 @@ class ActivityReasonsSeeder extends Seeder
         $activities = [
             [
                 'name' => 'Movies',
-                'photo' => 'storage/activities/Movies.png',
+                'photo' => 'activities/Movies.png',
             ],
             [
                 'name' => 'Praying',
-                'photo' => 'storage/activities/praying.png',
+                'photo' => 'activities/praying.png',
             ],
             [
                 'name' => 'Reading',
-                'photo' => 'storage/activities/Reading.png',
+                'photo' => 'activities/Reading.png',
             ],
             [
                 'name' => 'Bicycle',
-                'photo' => 'storage/activities/bicycle.png',
+                'photo' => 'activities/bicycle.png',
             ],
             [
                 'name' => 'Cooking',
-                'photo' => 'storage/activities/cooking.png',
+                'photo' => 'activities/cooking.png',
             ],
             [
                 'name' => 'Gym',
-                'photo' => 'storage/activities/Gym.png',
+                'photo' => 'activities/Gym.png',
             ],
             [
                 'name' => 'Help Other',
-                'photo' => 'storage/activities/Help-Other.png',
+                'photo' => 'activities/Help-Other.png',
             ],
             [
                 'name' => 'Meditate',
-                'photo' => 'storage/activities/Meditate.png',
+                'photo' => 'activities/Meditate.png',
             ],
             [
                 'name' => 'Music',
-                'photo' => 'storage/activities/Music.png',
+                'photo' => 'activities/Music.png',
             ],
             [
                 'name' => 'Save Money',
-                'photo' => 'storage/activities/save-money.png',
+                'photo' => 'activities/save-money.png',
             ],
             [
                 'name' => 'Shopping',
-                'photo' => 'storage/activities/shopping.png',
+                'photo' => 'activities/shopping.png',
             ],
             [
                 'name' => 'Study',
-                'photo' => 'storage/activities/study.png',
+                'photo' => 'activities/study.png',
             ],
             [
                 'name' => 'Sweeping',
-                'photo' => 'storage/activities/sweeping.png',
+                'photo' => 'activities/sweeping.png',
             ],
             [
                 'name' => 'Swim',
-                'photo' => 'storage/activities/swim.png',
+                'photo' => 'activities/swim.png',
             ],
             [
                 'name' => 'Travel',
-                'photo' => 'storage/activities/travel.png',
+                'photo' => 'activities/travel.png',
             ],
             [
                 'name' => 'Work',
-                'photo' => 'storage/activities/Work.png',
+                'photo' => 'activities/Work.png',
             ],
         ];
 
@@ -86,35 +86,35 @@ class ActivityReasonsSeeder extends Seeder
         $reasons = [
             [
                 'name' => 'Family',
-                'photo' => 'storage/reasons/family.png',
+                'photo' => 'reasons/family.png',
             ],
             [
                 'name' => 'Financial',
-                'photo' => 'storage/reasons/financial.png',
+                'photo' => 'reasons/financial.png',
             ],
             [
                 'name' => 'Friends',
-                'photo' => 'storage/reasons/friends.png',
+                'photo' => 'reasons/friends.png',
             ],
             [
                 'name' => 'Gift',
-                'photo' => 'storage/reasons/gift.png',
+                'photo' => 'reasons/gift.png',
             ],
             [
                 'name' => 'Health',
-                'photo' => 'storage/reasons/health.png',
+                'photo' => 'reasons/health.png',
             ],
             [
                 'name' => 'Heart',
-                'photo' => 'storage/reasons/heart.png',
+                'photo' => 'reasons/heart.png',
             ],
             [
                 'name' => 'Memories',
-                'photo' => 'storage/reasons/Memories.png',
+                'photo' => 'reasons/Memories.png',
             ],
             [
                 'name' => 'Societal Pressures',
-                'photo' => 'storage/reasons/Societal Pressures.png',
+                'photo' => 'reasons/Societal Pressures.png',
             ],
         ];
 

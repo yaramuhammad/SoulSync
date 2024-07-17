@@ -75,14 +75,14 @@ class EmotionsSeeder extends Seeder
             // Insert primary emotion
             $primaryId = DB::table('emotions')->insertGetId([
                 'name' => $primary,
-                'photo' => 'storage/Emotion/'.$primary.'.png',
+                'photo' => 'Emotion/'.$primary.'.png',
             ]);
 
             // Insert child emotions with descriptions
             foreach ($children as $child => $description) {
                 $childId = DB::table('secondary_emotions')->insertGetId([
                     'name' => $child,
-                    'photo' => 'storage/Emotion/'.$child.'.png',
+                    'photo' => 'Emotion/'.$child.'.png',
                     'parent_id' => $primaryId,
                     'description' => $description,
                 ]);
