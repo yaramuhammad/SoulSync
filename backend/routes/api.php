@@ -79,3 +79,6 @@ Route::post('/weekly-scores', [WeeklyAspectController::class,'store'])->middlewa
 Route::get('/weekly-tips', [WeeklyAspectController::class,'currentWeekTips'])->middleware('auth:sanctum');
 Route::put('/weekly-tips/{tipId}/mark-as-done', [WeeklyAspectController::class,'markTipAsDone'])->middleware('auth:sanctum');
 Route::get('/check-weekly-entry', [WeeklyAspectController::class,'returnkUserWeeklyEntry'])->middleware('auth:sanctum');
+
+
+Route::middleware('auth:sanctum')->get('/customized-tips', [WeeklyAspectController::class, 'getCustomizedTips']);

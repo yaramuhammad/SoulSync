@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Preference;
 use App\Models\User;
 use App\Models\UserWeeklyScore;
 use App\Models\UserWeeklyTip;
@@ -9,6 +10,7 @@ use App\Models\WeeklyAspect;
 use App\Models\WeeklyTip;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class WeeklyAspectController extends Controller
 {
@@ -16,6 +18,7 @@ class WeeklyAspectController extends Controller
     {
         return WeeklyAspect::all();
     }
+
 
     public function store(Request $request)
     {
@@ -35,6 +38,14 @@ class WeeklyAspectController extends Controller
             return response()->json(['error' => 'Scores for this week have already been submitted'], 400);
         }
 
+        $userPreferences = DB::table('preferences')
+            ->where(['user_id' => $user->id, 'answer' => 1])
+            ->pluck('preferences_question_tag')
+            ->toArray();
+
+        // Track which aspects have already received a tip
+        $aspectsWithTip = [];
+
         foreach ($data['scores'] as $score) {
             UserWeeklyScore::create([
                 'user_id' => $user->id,
@@ -45,8 +56,18 @@ class WeeklyAspectController extends Controller
             ]);
 
             if ($score['score'] < 5) {
-                $tips = WeeklyTip::where('weekly_aspect_id', $score['aspect_id'])->get();
-                foreach ($tips as $tip) {
+                // Retrieve a single tip for each aspect that matches the 'Home' tag
+                $tip = WeeklyTip::where('weekly_aspect_id', $score['aspect_id'])
+                    ->whereIn('tag', $userPreferences)
+                    ->whereNotIn('weekly_aspect_id', $aspectsWithTip)
+                    ->whereIn('tag', $userPreferences)
+                    ->inRandomOrder()
+                    ->first();
+
+                if ($tip) {
+                    // Track this aspect so we don't fetch another tip for it
+                    $aspectsWithTip[] = $score['aspect_id'];
+
                     UserWeeklyTip::create([
                         'user_id' => $user->id,
                         'weekly_tip_id' => $tip->id,
@@ -59,6 +80,7 @@ class WeeklyAspectController extends Controller
 
         return response()->json(['message' => 'Scores submitted successfully']);
     }
+
 
     public function currentWeekTips(Request $request)
     {
@@ -115,6 +137,28 @@ class WeeklyAspectController extends Controller
 
     public function returnkUserWeeklyEntry()
     {
-        return response()->json(['is_entry_exists'=>$this->checkUserWeeklyEntry(auth()->user())]);
+        return response()->json(['is_entry_exists' => $this->checkUserWeeklyEntry(auth()->user())]);
     }
+
+
+    public function getCustomizedTips(Request $request)
+    {
+        $user = $request->user();
+
+        // Retrieve user preferences where answer is 1 and get the tags
+        $userPreferences = Preference::where(['user_id' => $user->id, 'answer' => 1])
+            ->pluck('preferences_question_tag')
+            ->toArray();
+
+        // Retrieve weekly tips that match the user preferences
+        $tips = WeeklyTip::whereIn('weekly_aspect_id', function ($query) use ($userPreferences) {
+            $query->select('id')
+                ->from('weekly_aspects')
+                ->whereIn('tag', $userPreferences);
+        })->get();
+
+        // Return the tips as JSON response
+        return response()->json($tips);
+    }
+
 }
