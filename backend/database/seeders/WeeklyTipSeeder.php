@@ -20,6 +20,7 @@ class WeeklyTipSeeder extends Seeder
                 ['weekly_aspect_id' => 1, 'tag' => 'Reading', 'tip' => 'Read a storybook with your children.'],
                 ['weekly_aspect_id' => 1, 'tag' => 'Social', 'tip' => 'Host a family game night.'],
                 ['weekly_aspect_id' => 1, 'tag' => 'Sport', 'tip' => 'Play sports or exercise together as a family.'],
+                ['weekly_aspect_id' => 1, 'tag' => null, 'tip' => 'Have regular family meetings to discuss important matters.'],
             ],
 
             // Aspect 2: Friends
@@ -29,6 +30,7 @@ class WeeklyTipSeeder extends Seeder
                 ['weekly_aspect_id' => 2, 'tag' => 'Reading', 'tip' => 'Discuss a book with your friends.'],
                 ['weekly_aspect_id' => 2, 'tag' => 'Social', 'tip' => 'Organize a virtual hangout with friends.'],
                 ['weekly_aspect_id' => 2, 'tag' => 'Sport', 'tip' => 'Play a team sport with friends.'],
+                ['weekly_aspect_id' => 2, 'tag' => null, 'tip' => 'Send a thoughtful message to a friend you haven’t seen in a while.'],
             ],
 
             // Aspect 3: Money
@@ -38,6 +40,7 @@ class WeeklyTipSeeder extends Seeder
                 ['weekly_aspect_id' => 3, 'tag' => 'Reading', 'tip' => 'Read a financial planning book.'],
                 ['weekly_aspect_id' => 3, 'tag' => 'Social', 'tip' => 'Discuss financial goals with a friend or partner.'],
                 ['weekly_aspect_id' => 3, 'tag' => 'Sport', 'tip' => 'Explore budget-friendly fitness activities.'],
+                ['weekly_aspect_id' => 3, 'tag' => null, 'tip' => 'Create a savings plan for a future goal.'],
             ],
 
             // Aspect 4: Health
@@ -47,6 +50,7 @@ class WeeklyTipSeeder extends Seeder
                 ['weekly_aspect_id' => 4, 'tag' => 'Reading', 'tip' => 'Read about new health trends or nutrition tips.'],
                 ['weekly_aspect_id' => 4, 'tag' => 'Social', 'tip' => 'Join a fitness class or group activity.'],
                 ['weekly_aspect_id' => 4, 'tag' => 'Sport', 'tip' => 'Try a new outdoor activity like hiking or biking.'],
+                ['weekly_aspect_id' => 4, 'tag' => null, 'tip' => 'Schedule regular health check-ups and screenings.'],
             ],
 
             // Aspect 5: Career
@@ -56,6 +60,7 @@ class WeeklyTipSeeder extends Seeder
                 ['weekly_aspect_id' => 5, 'tag' => 'Reading', 'tip' => 'Read industry-related books or articles.'],
                 ['weekly_aspect_id' => 5, 'tag' => 'Social', 'tip' => 'Network with professionals in your field.'],
                 ['weekly_aspect_id' => 5, 'tag' => 'Sport', 'tip' => 'Take breaks to stretch and move during work hours.'],
+                ['weekly_aspect_id' => 5, 'tag' => null, 'tip' => 'Set career goals and create a plan to achieve them.'],
             ],
 
             // Aspect 6: Personal Growth
@@ -65,6 +70,7 @@ class WeeklyTipSeeder extends Seeder
                 ['weekly_aspect_id' => 6, 'tag' => 'Reading', 'tip' => 'Read self-help books for personal development.'],
                 ['weekly_aspect_id' => 6, 'tag' => 'Social', 'tip' => 'Attend personal growth workshops or seminars.'],
                 ['weekly_aspect_id' => 6, 'tag' => 'Sport', 'tip' => 'Engage in activities that challenge your comfort zone.'],
+                ['weekly_aspect_id' => 6, 'tag' => null, 'tip' => 'Reflect on your achievements and set new personal goals.'],
             ],
 
             // Aspect 7: Fun
@@ -74,6 +80,7 @@ class WeeklyTipSeeder extends Seeder
                 ['weekly_aspect_id' => 7, 'tag' => 'Reading', 'tip' => 'Read fiction or humorous books for relaxation.'],
                 ['weekly_aspect_id' => 7, 'tag' => 'Social', 'tip' => 'Organize a fun outing with friends or family.'],
                 ['weekly_aspect_id' => 7, 'tag' => 'Sport', 'tip' => 'Play recreational sports or games with others.'],
+                ['weekly_aspect_id' => 7, 'tag' => null, 'tip' => 'Try a new hobby or recreational activity.'],
             ],
 
             // Aspect 8: Physical Environment
@@ -83,6 +90,7 @@ class WeeklyTipSeeder extends Seeder
                 ['weekly_aspect_id' => 8, 'tag' => 'Reading', 'tip' => 'Read about minimalist living or sustainable practices.'],
                 ['weekly_aspect_id' => 8, 'tag' => 'Social', 'tip' => 'Host an eco-friendly gathering or swap party.'],
                 ['weekly_aspect_id' => 8, 'tag' => 'Sport', 'tip' => 'Explore outdoor activities in natural environments.'],
+                ['weekly_aspect_id' => 8, 'tag' => null, 'tip' => 'Create a relaxing outdoor space in your garden or balcony.'],
             ],
 
             // Aspect 9: Spirituality
@@ -92,6 +100,7 @@ class WeeklyTipSeeder extends Seeder
                 ['weekly_aspect_id' => 9, 'tag' => 'Reading', 'tip' => 'Read spiritual texts or philosophy books.'],
                 ['weekly_aspect_id' => 9, 'tag' => 'Social', 'tip' => 'Attend a religious or spiritual community gathering.'],
                 ['weekly_aspect_id' => 9, 'tag' => 'Sport', 'tip' => 'Practice yoga or tai chi for spiritual connection and physical health.'],
+                ['weekly_aspect_id' => 9, 'tag' => null, 'tip' => 'Spend time in nature to connect with your spirituality.'],
             ],
 
             // Aspect 10: Love
@@ -101,6 +110,7 @@ class WeeklyTipSeeder extends Seeder
                 ['weekly_aspect_id' => 10, 'tag' => 'Reading', 'tip' => 'Read books or articles on relationships and communication.'],
                 ['weekly_aspect_id' => 10, 'tag' => 'Social', 'tip' => 'Share your feelings and express gratitude to your partner.'],
                 ['weekly_aspect_id' => 10, 'tag' => 'Sport', 'tip' => 'Engage in physical activities together to strengthen your bond.'],
+                ['weekly_aspect_id' => 10, 'tag' => null, 'tip' => 'Spend quality time together doing something you both enjoy.'],
             ],
         ];
 

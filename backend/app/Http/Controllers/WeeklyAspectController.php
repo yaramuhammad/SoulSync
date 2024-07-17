@@ -58,6 +58,7 @@ class WeeklyAspectController extends Controller
                 // Retrieve a single tip for each aspect that matches the 'Home' tag
                 $tip = WeeklyTip::where('weekly_aspect_id', $score['aspect_id'])
                     ->whereIn('tag', $userPreferences)
+                    ->orWhereNull('tag')
                     ->whereNotIn('weekly_aspect_id', $aspectsWithTip)
                     ->whereIn('tag', $userPreferences)
                     ->inRandomOrder()

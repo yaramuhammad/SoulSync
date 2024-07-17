@@ -24,7 +24,15 @@ class EntryController extends Controller
         $entry = Auth::user()->entries()->with(['activities', 'reasons', 'primary_emotion', 'secondary_emotion'])
             ->whereDate('created_at', today())->first();
 
-        return new EntryResource($entry);
+        if ($entry) {
+            if ($entry->journal == '') {
+                return response()->json(['message' => 'entry not completed'], 400);
+            }
+
+            return new EntryResource($entry);
+        }
+
+        return response()->json(['message' => 'no entry for today']);
     }
 
     public static function updateOrCreateEntry()

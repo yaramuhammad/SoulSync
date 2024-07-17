@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->foreignId('weekly_aspect_id')->constrained()->onDelete('cascade');
             $table->string('tip');
-            $table->string('tag');
+            $table->string('tag')->nullable();
         });
     }
 
